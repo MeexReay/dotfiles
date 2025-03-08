@@ -1,4 +1,4 @@
 #!/bin/bash
 
 blueman-applet &
-~/.config/sway/random-bg.py &
+~/.config/sway/random-bg.py loop &
