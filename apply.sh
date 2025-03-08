@@ -1,8 +1,9 @@
 #!/usr/bin/bash
 
 cp aliases ~/.bash_aliases
-cp -r kitty ~/.config/kitty
-cp -r sway ~/.config/sway
-cp -r waybar ~/.config/waybar
-cp -r helix ~/.config/helix
-cp -r dunst ~/.config/dunst
+cp -a lightdm/. /etc/lightdm
+cp -a kitty/. ~/.config/kitty
+cp -a sway/. ~/.config/sway
+cp -a waybar/. ~/.config/waybar
+cp -a helix/. ~/.config/helix
+cp -a dunst/. ~/.config/dunst
