@@ -1,6 +1,6 @@
 # My config files
 
-I dont use any program for "dotfiles generating", maybe in another life \
+I dont use any program for "dotfiles generating", maybe in another life
 
 ## About
 
