@@ -26,7 +26,8 @@ Height of dmenu now fit to waybar \
 Clickable sound, wifi and *bluetooth modules (*bluetooth icon in tray) \
 Translated calendar to russian \
 Russian keyboard layout \
-Battery module in bar
+Battery module in bar \
+Windows+G changes wallpaper to random one
 
 ### Screenshots
 
@@ -46,5 +47,4 @@ sudo ./apply.sh # apply configs + lightdm
 My username is `user`, so if you want to use my configs with another username, you need to change it from `user` to yours here:
 ```
 lightdm/lightdm-mini-greeter.conf (line: 7)
-sway/config (line: 306)
 ```
