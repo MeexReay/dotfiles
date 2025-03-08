@@ -21,5 +21,5 @@ DM: LightDM + LightdmMiniGreeter
 sudo ./install.sh # install required packages
 ./apply.sh # apply configs without lightdm
 sudo ./apply.sh # apply configs + lightdm
-./generate.sh # copy configs
+./generate.sh # copy configs from system
 ```
