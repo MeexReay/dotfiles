@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-cp startup ~/.startup
 cp aliases ~/.bash_aliases
 cp -a lightdm/. /etc/lightdm
 cp -a kitty/. ~/.config/kitty

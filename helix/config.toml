@@ -4,6 +4,11 @@ theme = "ayu_dark"
 line-number = "absolute"
 mouse = true
 
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -11,3 +16,9 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.lsp]
+display-inlay-hints = true

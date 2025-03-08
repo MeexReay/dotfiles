@@ -46,7 +46,8 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-input "2362:597:HTIX5288:00_093A:0255_Touchpad" { # CHANGE TOUCHPAD ID HERE
+# CHANGE TOUCHPAD ID HERE (get identifiers: swaymsg -t get_inputs)
+input "2362:597:HTIX5288:00_093A:0255_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
@@ -177,6 +178,9 @@ input type:keyboard {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+    bindsym $mod+g exec "$HOME/.config/sway/random-bg.py onetime &"
+
 #
 # Resizing containers:
 #
@@ -303,6 +307,6 @@ for_window {
 # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
-exec "/home/user/.startup &"
+exec "$HOME/.config/sway/startup.sh &"
 
 include /etc/sway/config.d/*
