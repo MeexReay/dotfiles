@@ -4,9 +4,9 @@ import random
 import time
 import subprocess
 import threading
-import signal
 import sys
 import os
+import psutil
 
 WALLPAPERS_DIR = os.path.join(os.path.dirname(__file__), "wallpapers/")
 INTERVAL_SECONDS = 60 * 10
@@ -18,17 +18,24 @@ def get_random_wallpaper():
     return random.choice(get_wallpapers())
 
 def create_wallpaper_process(path):
-    return os.getpgid(subprocess.Popen(
-        "swaybg -m fill -i \""+path+"\"", 
-        stdout=subprocess.PIPE, 
-        shell=True,
-        preexec_fn=os.setsid
-    ).pid)
+    process = subprocess.Popen(
+        ["swaybg", "-m", "fill", "-i", path],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    )
+    kill_old_processes(process.pid)
+    return process
 
 def send_wallpaper(path, interval):
-    pid = create_wallpaper_process(path)
+    process = create_wallpaper_process(path)
     time.sleep(interval)
-    os.killpg(pid, signal.SIGTERM)
+    process.kill()
+    
+def kill_old_processes(new_pid):
+    for proc in psutil.process_iter():
+        if proc.pid != new_pid and proc.name() == "swaybg":
+            print(proc.name(), proc.pid)
+            proc.kill()
 
 def main():
     args = sys.argv[1:]
