@@ -1,5 +1,7 @@
 # My config files
 
+I dont use any program for "dotfiles generating", maybe in another life
+
 ## About
 
 OS: Void Linux x86_64 \
