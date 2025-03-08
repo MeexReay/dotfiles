@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+rm startup 2> /dev/null
 rm aliases 2> /dev/null
 rm -r lightdm 2> /dev/null
 rm -r kitty 2> /dev/null
@@ -10,6 +11,7 @@ rm -r dunst 2> /dev/null
 
 mkdir lightdm
 
+cp ~/.startup startup
 cp ~/.bash_aliases aliases
 cp /etc/lightdm/lightdm.conf lightdm
 cp /etc/lightdm/lightdm-mini-greeter.conf lightdm
