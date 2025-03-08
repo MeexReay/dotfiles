@@ -48,3 +48,13 @@ My username is `user`, so if you want to use my configs with another username, y
 ```
 lightdm/lightdm-mini-greeter.conf (line: 7)
 ```
+
+Also if you need to use touchpad, edit identifier of it in sway's config (you can find identifier of your touchpad in `swaymsg -t get_inputs`):
+```
+sway/config (line: 50)
+```
+
+Shortcut to change keyboard layout is located here (default: ctrl + shift):
+```
+sway/config (line: 60)
+```
