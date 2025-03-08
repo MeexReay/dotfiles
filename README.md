@@ -18,7 +18,8 @@ DM: LightDM + LightdmMiniGreeter
 ## How to install
 
 ```bash
-./install.sh # install required packages
-./apply.sh # apply configs
+sudo ./install.sh # install required packages
+./apply.sh # apply configs without lightdm
+sudo ./apply.sh # apply configs + lightdm
 ./generate.sh # copy configs
 ```
