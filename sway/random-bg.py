@@ -7,7 +7,7 @@ import threading
 import signal
 import os
 
-WALLPAPERS_DIR = "~/.config/sway/wallpapers/"
+WALLPAPERS_DIR = os.path.join(os.path.dirname(__file__), "wallpapers/")
 INTERVAL_SECONDS = 60 * 10
 
 def get_wallpapers():
