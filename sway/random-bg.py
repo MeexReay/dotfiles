@@ -23,12 +23,13 @@ def create_wallpaper_process(path):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     )
-    kill_old_processes(process.pid)
     return process
 
 def send_wallpaper(path, interval):
     process = create_wallpaper_process(path)
-    time.sleep(interval)
+    time.sleep(1)
+    kill_old_processes(process.pid)
+    time.sleep(interval-1)
     process.kill()
     
 def kill_old_processes(new_pid):
@@ -57,9 +58,12 @@ def main():
                     time.sleep(INTERVAL_SECONDS)
             return
         elif args[0] == "onetime":
-            create_wallpaper_process(get_random_wallpaper())
-            while True:
-                time.sleep(10)
+            process = create_wallpaper_process(get_random_wallpaper())
+            while process.stdout.read() not in "1234567890-:_":
+                time.sleep(1/60)
+            if process.poll() is None:
+                kill_old_processes(process.pid)
+                process.wait()
             return
         
     print("Usage:", sys.argv[0], "<onetime/loop>")

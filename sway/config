@@ -34,9 +34,12 @@ set $menu dmenu_run
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 600 'swaylock -f -c 000000' \
+         timeout 1200 'swaymsg "output * power off"' \
+         resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
+
+# bindsym XF86Sleep exec swaylock -f -c 000000
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -48,10 +51,11 @@ exec swayidle -w \
 #
 # CHANGE TOUCHPAD ID HERE (get identifiers: swaymsg -t get_inputs)
 input "2362:597:HTIX5288:00_093A:0255_Touchpad" {
-    dwt enabled
+    dwt disabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
+    scroll_factor 0.3
 }
 
 
@@ -114,6 +118,8 @@ input type:keyboard {
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
     focus_follows_mouse no
+
+    bindsym $mod+Shift+s sticky toggle
 #
 # Workspaces:
 #
@@ -179,7 +185,7 @@ input type:keyboard {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-    bindsym $mod+g exec "$HOME/.config/sway/random-bg.py onetime &"
+    bindsym $mod+g exec "$HOME/.config/sway/random-bg.py onetime"
 
 #
 # Resizing containers:
@@ -214,10 +220,12 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym --locked XF86MonBrightnessDown exec $HOME/.config/sway/brightness.sh -5
+    bindsym --locked XF86MonBrightnessUp exec $HOME/.config/sway/brightness.sh +5
     # Special key to take a screenshot with grim
-
+    #
+    bindsym XF86Sleep exec swaylock -f -c 000000
+    
     bindsym $mod+n exec pcmanfm
     bindsym Print exec slurp | grim -g - - | wl-copy
     bindsym Shift+Print exec grim - | wl-copy
@@ -307,6 +315,6 @@ for_window {
 # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
-exec "$HOME/.config/sway/startup.sh &"
+exec "$HOME/.config/sway/startup.sh"
 
 include /etc/sway/config.d/*
