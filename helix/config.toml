@@ -1,4 +1,4 @@
-theme = "ayu_dark"
+theme = "transparent_ayu_dark"
 
 [editor]
 line-number = "absolute"

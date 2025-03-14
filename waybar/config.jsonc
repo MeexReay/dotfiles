@@ -28,6 +28,7 @@
     "modules-right": [
 	      "tray",
 	      "custom/keyboard-layout",
+	      "keyboard-state",
 	// "bluetooth",
 	      "pulseaudio",
         "network",
@@ -48,6 +49,20 @@
     // -------------------------------------------------------------------------
     // Modules
     // -------------------------------------------------------------------------
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": false,
+        "format": {
+            "numlock": "{icon} ",
+            "capslock": "{icon} "                                                                                                                                                       
+        },
+        "format-icons": {
+            "locked": "󰎠",
+            "unlocked": "󱧓"
+        }
+    },
+
 
     "bluetooth": {
 	      "format": " {status}",

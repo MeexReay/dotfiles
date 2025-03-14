@@ -60,6 +60,7 @@
 #clock,
 #cpu,
 #custom-keyboard-layout,
+#keyboard-state,
 #memory,
 #mode,
 #network,
@@ -83,6 +84,7 @@
 #custom-keyboard-layout,
 #memory,
 #mode,
+#keyboard-state,
 #network,
 #pulseaudio,
 #temperature {

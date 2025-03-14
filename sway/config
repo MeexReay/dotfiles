@@ -62,6 +62,7 @@ input "2362:597:HTIX5288:00_093A:0255_Touchpad" {
 input type:keyboard {
     xkb_layout "us,ru"
     xkb_options "grp:ctrl_shift_toggle"
+    xkb_numlock enabled
 }
 
 #
@@ -228,6 +229,7 @@ bindsym $mod+r mode "resize"
     
     bindsym $mod+n exec pcmanfm
     bindsym Print exec slurp | grim -g - - | wl-copy
+    bindsym $mod+Print exec slurp | grim -g - - | feh --auto-zoom --scale-down -
     bindsym Shift+Print exec grim - | wl-copy
 
 #
@@ -261,6 +263,7 @@ set {
 for_window {
 #popup - floating enable; sticky enable
 	[app_id="dunst"] $popup
+	[class="feh"] $popup
 	[title="Picture-in-Picture"] $popup
 	[app_id="stoken-gui"] $popup
 	[app_id="org.twosheds.iwgtk"] $popup
