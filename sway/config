@@ -231,6 +231,7 @@ bindsym $mod+r mode "resize"
     bindsym Print exec slurp | grim -g - - | wl-copy
     bindsym $mod+Print exec slurp | grim -g - - | feh --auto-zoom --scale-down -
     bindsym Shift+Print exec grim - | wl-copy
+    bindsym $mod+c exec copyq toggle
 
 #
 # Status Bar:
@@ -263,7 +264,9 @@ set {
 for_window {
 #popup - floating enable; sticky enable
 	[app_id="dunst"] $popup
+	[app_id="com.github.hluk.copyq"] $popup
 	[class="feh"] $popup
+	[class="Gnome-power-statistics"] $popup
 	[title="Picture-in-Picture"] $popup
 	[app_id="stoken-gui"] $popup
 	[app_id="org.twosheds.iwgtk"] $popup

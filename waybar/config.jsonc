@@ -93,7 +93,8 @@
             ""  // Icon: battery-empty
         ],
 	      "format-alt": "{time} {icon}",
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "bash -c 'xhost +SI:localuser:root && gsudo gnome-power-statistics'"
     },
     
     "battery#bat2": {
