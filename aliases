@@ -1,5 +1,5 @@
-alias vim="hx"
-alias vi="hx"
+# alias vim="hx"
+# alias vi="hx"
 alias xi="sudo xbps-install"
 alias xr="sudo xbps-remove"
 alias xq="sudo xbps-query"

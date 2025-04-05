@@ -94,7 +94,7 @@
         ],
 	      "format-alt": "{time} {icon}",
         "tooltip": true,
-        "on-click": "bash -c 'xhost +SI:localuser:root && gsudo gnome-power-statistics'"
+        "on-click": "gnome-power-statistics"
     },
     
     "battery#bat2": {
@@ -112,7 +112,8 @@
     "clock#time": {
         "interval": 1,
         "format": "{:%H:%M:%S}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "gnome-clocks"
     },
 
     "clock#date": {
