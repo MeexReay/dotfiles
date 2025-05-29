@@ -27,7 +27,9 @@ Clickable sound, wifi and *bluetooth modules (*bluetooth icon in tray) \
 Translated calendar to russian \
 Russian keyboard layout \
 Battery module in bar \
-Windows+G changes wallpaper to random one
+Windows+G changes wallpaper to random one \
+Windows+I launches chromium \
+Windows+O launches gnome calculator
 
 ### Screenshots
 
