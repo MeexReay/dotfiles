@@ -66,6 +66,7 @@
 #network,
 #pulseaudio,
 #temperature,
+#backlight,
 #tray {
     margin: 0 5px;
     padding-left: 5px;
@@ -87,6 +88,7 @@
 #keyboard-state,
 #network,
 #pulseaudio,
+#backlight,
 #temperature {
     box-shadow: inset 0 3px #ddd;
 }

@@ -28,7 +28,8 @@
     "modules-right": [
 	      "tray",
 	      "custom/keyboard-layout",
-	      "keyboard-state",
+        "backlight",
+	      //"keyboard-state",
 	// "bluetooth",
 	      "pulseaudio",
         "network",
@@ -49,6 +50,12 @@
     // -------------------------------------------------------------------------
     // Modules
     // -------------------------------------------------------------------------
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["🌑","🌘","🌗","🌖","🌕"]
+    },
 
     "keyboard-state": {
         "numlock": true,

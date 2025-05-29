@@ -35,13 +35,10 @@ set $bindsym bindsym --to-code
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 600 '/home/user/swaylock-with-camera.sh' \
-         timeout 300 'swaymsg "output * power off"' \
-         resume 'swaymsg "output * power on"' \
-         before-sleep '/home/user/swaylock-with-camera.sh'
+exec ~/.config/sway/idle.sh
+         
 
-$bindsym $mod+z exec /home/user/swaylock-with-camera.sh
+$bindsym $mod+z exec ~/.config/sway/idle.sh
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -249,12 +246,14 @@ $bindsym $mod+r mode "resize"
     
     $bindsym $mod+n exec thunar
      # mod+n
-    $bindsym Print exec slurp | grim -g - - | wl-copy
+    $bindsym Print exec slurp | grim -g - - | swappy -f -
     $bindsym $mod+Print exec slurp | grim -g - - | feh --auto-zoom --scale-down -
-    $bindsym Shift+Print exec grim - | wl-copy
+    $bindsym Shift+Print exec grim - | swappy -f -
     $bindsym $mod+c exec copyq toggle
+    $bindsym $mod+o exec gnome-calculator
+    $bindsym $mod+i exec chromium
      # mod+c
-    $bindsym $mod+Shift+g exec bash -c "cd $HOME/touchpaddraw && ./toggle.sh touchpad"
+    $bindsym $mod+Shift+g exec bash -c "cd $HOME/Source/touchpaddraw && ./toggle.sh touchpad"
 
 #
 # Status Bar:
@@ -287,7 +286,6 @@ set {
 for_window {
 #popup - floating enable; sticky enable
   [app_id="org.kde.kcalc"] $popup
-  [app_id="org.gnome.clocks"] $popup
 	[app_id="dunst"] $popup
 	[app_id="com.github.hluk.copyq"] $popup
 	[class="feh"] $popup
@@ -321,6 +319,7 @@ for_window {
 	[window_type="popup_menu"] $float; shadows enable
 	[window_type="tooltip"] $float; shadows enable
 	[window_type="notification"] $float; shadows enable
+	[class="bRAC"] $float
 
 #video - inhibit_idle fullscreen; border none; max_render_time off
 	[instance="chromium"] $video
@@ -339,7 +338,8 @@ for_window {
 	[title="Removable medium is inserted" app_id="pcmanfm|pcmanfm-qt"] $important
 	[title="Compressing (.*) — Ark" app_id="org.kde.ark"] $important; resize set width 18 ppt
 
-
+  [app_id="org.gnome.clocks"] floating enable;
+  [app_id="org.gnome.Calculator"] floating enable;
 }
 
 

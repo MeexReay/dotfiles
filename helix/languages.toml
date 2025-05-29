@@ -1,8 +1,10 @@
-
-
 [[language]]
 name = "rust"
 auto-format = false
+
+# [language.config]
+# cachePriming.enable = false
+# diagnostics.experimental.enable = true
 
 [[language]]
 name = "python"
