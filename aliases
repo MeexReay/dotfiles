@@ -1,0 +1,7 @@
+# alias vim="hx"
+# alias vi="hx"
+alias xi="sudo xbps-install"
+alias xr="sudo xbps-remove"
+alias xq="sudo xbps-query"
+alias xs="sudo xbps-query -Rs"
+alias ssh="TERM=xterm-256color ssh"

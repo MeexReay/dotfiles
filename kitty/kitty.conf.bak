@@ -1,0 +1,10 @@
+confirm_os_window_close 0
+map ctrl+c copy_and_clear_or_interrupt
+map ctrl+v paste_from_clipboard
+map ctrl+equal increase_font_size
+map ctrl+minus decrease_font_size
+touch_scroll_multiplier 3.0
+wheel_scroll_multiplier 3.0
+background_opacity 0.9
+
+include current-theme.conf

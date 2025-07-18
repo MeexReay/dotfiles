@@ -1,0 +1,225 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+{
+  // -------------------------------------------------------------------------
+  // Global configuration
+  // -------------------------------------------------------------------------
+  "layer": "top",
+  "position": "top",
+  // If height property would be not present, it'd be calculated dynamically
+  "height": 23,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/scratchpad",
+    "sway/mode",
+    "sway/window"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/keyboard-layout",
+    "backlight",
+    //"keyboard-state",
+    // "bluetooth",
+    "pulseaudio",
+    "network",
+    "memory",
+    "cpu",
+    // "temperature",
+    // "custom/keyboard-layout",
+    "battery",
+    // "battery#bat2",
+    // "pulseaudio",
+    // "tray",
+    "clock#date",
+    "clock#time",
+    "custom/power"
+  ],
+  // -------------------------------------------------------------------------
+  // Modules
+  // -------------------------------------------------------------------------
+  "backlight": {
+    "device": "amdgpu_bl0",
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "🌑",
+      "🌘",
+      "🌗",
+      "🌖",
+      "🌕"
+    ]
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": false,
+    "format": {
+      "numlock": "{icon} ",
+      "capslock": "{icon} "
+    },
+    "format-icons": {
+      "locked": "󰎠",
+      "unlocked": "󱧓"
+    }
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    // Connected to AC
+    "format": "  {capacity}%", // Icon: bolt
+    // Not connected to AC
+    "format-discharging": "{icon}  {capacity}%",
+    "format-icons": [
+      "", // Icon: battery-full
+      "", // Icon: battery-three-quarters
+      "", // Icon: battery-half
+      "", // Icon: battery-quarter
+      "" // Icon: battery-empty
+    ],
+    "format-alt": "{time} {icon}",
+    "tooltip": true,
+    "on-click": "gnome-power-statistics"
+  },
+  // "battery#bat2": {
+  // "bat": "BAT2"
+  // },
+  "clock#time": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "tooltip": false,
+    "on-click": "gnome-clocks"
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": " {:%e %b %Y}", // Icon: calendar-alt
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "locale": "ru_RU.UTF-8",
+    "calendar": {
+      "format": {
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "  {usage}% ({load})", // Icon: microchip
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "custom/keyboard-layout": {
+    "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+    // Interval set only as a fallback, as the value is updated by signal
+    "interval": 1,
+    "format": "  {}", // Icon: keyboard
+    // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+    "signal": 1, // SIGHUP
+    "tooltip": false
+    // "locale": "ru_RU.UTF-8"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "\uefc5  {}%", // Icon: memory
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+    "format-ethernet": "\udb80\ude00  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+    "format-disconnected": "⚠  Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "tail -n+3 /proc/net/wireless | grep -q . && wpa-cute"
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">\udb85\udc0e  {}</span>", // Icon: expand-arrows-alt
+    "tooltip": false
+  },
+  "sway/window": {
+    "format": "{}",
+    "max-length": 120
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": [
+      "",
+      ""
+    ],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+    "on-click": "swaymsg scratchpad show"
+  },
+  "sway/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": true,
+    "format": "{icon}"
+  },
+  "pulseaudio": {
+    //"scroll-step": 1,
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "interval": 5,
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": [
+      "", // Icon: temperature-empty
+      "", // Icon: temperature-quarter
+      "", // Icon: temperature-half
+      "", // Icon: temperature-three-quarters
+      "" // Icon: temperature-full
+    ],
+    "tooltip": true
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+      "shutdown": "loginctl poweroff",
+      "reboot": "loginctl reboot",
+      "suspend": "loginctl suspend",
+      "hibernate": "loginctl hibernate"
+    }
+  }
+}
