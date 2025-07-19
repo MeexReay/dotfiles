@@ -1,3 +1,6 @@
+> [!WARNING]
+> Migrated to my selfhost [Gitea](https://git.meex.lol/MeexReay/dotfiles-void)
+
 # My config files
 
 I dont use any program for "dotfiles generating", maybe in another life
